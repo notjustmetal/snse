@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://kit.fontawesome.com/57af440f61.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Orbitron:400,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+<script type="text/javascript" src="assets/js/lib/howler.js"></script>
+<script type="text/javascript" src="assets/js/lib/paper-full.js"></script>
+<script type="text/paperscript" canvas="myCanvas">
+	var width = view.size.width;
+	var height = view.size.height;
+
+	//declaring temp patterns
+	var pattern1 = createTemp();
+    var pattern2a = createTemp();
+    var pattern2b = createTemp();
+    var pattern3a = createTemp();
+    var pattern3b = createTemp();
+    var pattern4a = createTemp();
+    var pattern4b = createTemp();
+    var pattern4c = createTemp();
+    var pattern5 = createTemp();
+    var pattern6 = createTemp();
+    var pattern7 = createTemp();
+    var pattern8a = createTemp();
+    var pattern8b = createTemp();
+    var pattern9a = createTemp();
+    var pattern9b = createTemp();
+    var pattern10a = createTemp();
+    var pattern10b = createTemp();
+
+    //assigning sounds
+    var pattern1Sound = new Howl({
+    	src: ['assets/sounds/sound1.wav']
+    });
+    var pattern2Sound = new Howl({
+    	src: ['assets/sounds/sound2.wav']
+    });
+    var pattern3Sound = new Howl({
+    	src: ['assets/sounds/sound3.wav']
+    });
+    var pattern4Sound = new Howl({
+    	src: ['assets/sounds/sound4.wav']
+    });
+    var pattern5Sound = new Howl({
+    	src: ['assets/sounds/sound5.wav']
+    });
+    var pattern6Sound = new Howl({
+    	src: ['assets/sounds/sound6.wav']
+    });
+    var pattern7Sound = new Howl({
+    	src: ['assets/sounds/sound7.wav']
+    });
+    var pattern8Sound = new Howl({
+    	src: ['assets/sounds/sound8.wav']
+    });
+    var pattern9Sound = new Howl({
+    	src: ['assets/sounds/sound9.wav']
+    });
+    var pattern10Sound = new Howl({
+    	src: ['assets/sounds/sound10.wav']
+    });
+
+    //drawing on each key down event
+	function onKeyDown(event) {	
+		if (event.key === "space") {
+
+			document.querySelector(".hello").classList.toggle("goodbye");
+
+		} else if (event.key === "1") {
+			//create a circle in the middle of canvas
+			pattern1Sound.play();
+
+			pattern1.remove();
+
+			pattern1 = new Path.Circle(new Point(width/2, height/2), 300);
+			pattern1.fillColor = "#ffb8a3";
+
+		} else if (event.key === "2") {
+			//create two squares on opposite sides of the canvas
+			pattern2Sound.play();
+
+			pattern2a.remove();
+			pattern2b.remove();
+
+			var rectangle1 = new Rectangle(new Point(50, height/2 - 75), new Point(200, height/2 + 75));
+			var rectangle2 = new Rectangle(new Point(width - 200, height/2 - 75), new Point(width - 50, height/2 + 75));
+			pattern2a = new Path.Rectangle(rectangle1);
+			pattern2b = new Path.Rectangle(rectangle2);
+			pattern2a.fillColor = "#ffc9f0";
+			pattern2b.fillColor = "#ffc9f0";
+
+		} else if (event.key === "3") {
+			//create two rectangles outside of canvas
+			pattern3Sound.play();
+
+			pattern3a.remove();
+			pattern3b.remove();
+
+			var rectangle1 = new Rectangle(new Point(0 - width, 0), new Size(width, 30));
+			pattern3a = new Path.Rectangle(rectangle1);
+			pattern3a.fillColor = "#c894ff";
+
+			var rectangle2 = new Rectangle(new Point(width - 30, height), new Size(30, height));
+			pattern3b = new Path.Rectangle(rectangle2);
+			pattern3b.fillColor = "#c894ff";
+
+		} else if (event.key === "4") {
+			//create three rectangles in the middle of the screen
+			pattern4Sound.play();
+
+			pattern4a.remove();
+			pattern4b.remove();
+			pattern4c.remove();
+
+			var rectangle1 = new Rectangle(new Point(width/2 - 200, 150), new Size(100, height/2));
+			pattern4a = new Path.Rectangle(rectangle1);
+			pattern4a.fillColor = "#c2a8ff";
+
+			var rectangle2 = new Rectangle(new Point(width/2 - 50, 150), new Size(100, height/2));
+			pattern4b = new Path.Rectangle(rectangle2);
+			pattern4b.fillColor = "#ffc2c7";
+
+			var rectangle3 = new Rectangle(new Point(width/2 + 100, 150), new Size(100, height/2));
+			pattern4c = new Path.Rectangle(rectangle3);
+			pattern4c.fillColor = "#c2a8ff";
+
+		} else if (event.key === "5") {
+			//create a circle in the bottom right of canvas
+			pattern5Sound.play();
+
+			pattern5.remove();
+
+			pattern5 = new Path.Circle(new Point(width, height), 100);
+			pattern5.fillColor = "#67bbff";
+
+		} else if (event.key === "6") {
+			//create a circle in the middle of canvas
+			pattern6Sound.play();
+
+			pattern6.remove();
+
+			pattern6 = new Path.Circle(new Point(width/2, height/2), 300);
+			pattern6.fillColor = "#e08aff";
+		} else if (event.key === "7") {
+			//create a outline triangle in the middle of canvas
+			pattern7Sound.play();
+
+			pattern7.remove();
+
+			pattern7 = new Path.RegularPolygon(new Point(width/2, height/2), 3, 50);
+			pattern7.strokeColor = "#ffb5b0";
+			pattern7.strokeWidth = 20;
+		} else if (event.key === "8") {
+			//create two rectangles outside of canvas
+			pattern8Sound.play();
+
+			pattern8a.remove();
+			pattern8b.remove();
+
+			var rectangle1 = new Rectangle(new Point(0, 0 - height), new Size(width/2, height + 300));
+			pattern8a = new Path.Rectangle(rectangle1);
+			pattern8a.fillColor = "#ff9985";
+
+			var rectangle2 = new Rectangle(new Point(width/2, height), new Size(width/2, height + 300));
+			pattern8b = new Path.Rectangle(rectangle2);
+			pattern8b.fillColor = "#b4ff89";
+		} else if (event.key === "9") {
+			//create two circles on opposite side of canvas
+			pattern9Sound.play();
+
+			pattern9a.remove();
+			pattern9b.remove();
+
+			pattern9a = new Path.Circle(new Point(200, height/2), 1500);
+			pattern9a.fillColor = "#ffb8d6";
+			pattern9b = new Path.Circle(new Point(width - 200, height/2), 1500);
+			pattern9b.fillColor = "#fbffb3";
+		} else if (event.key === "0") {
+			//create two pentagons on opposite side of canvas
+			pattern10Sound.play();
+
+			pattern10a.remove();
+			pattern10b.remove();
+
+			pattern10a = new Path.RegularPolygon(new Point(100, height - 100), 5, 50);
+			pattern10a.strokeColor = "#d5ffe9";
+			pattern10a.strokeWidth = 20;
+
+			pattern10b = new Path.RegularPolygon(new Point(width - 100, height - 100), 5, 50);
+			pattern10b.strokeColor = "#ffb5b0";
+			pattern10b.strokeWidth = 20;
+		}
+	}
+
+	//animating on each frame
+	function onFrame(event) {
+		//scaling down pattern for "1" key
+		pattern1.fillColor.hue += 2;
+		pattern1.scale(0.9);
+
+		//rotating and scaling down patterns for "2" key
+		pattern2a.rotate(15);
+		pattern2b.rotate(-15);
+		pattern2a.fillColor.hue += 2;
+		pattern2b.fillColor.hue += 2;
+		pattern2a.scale(0.9);
+		pattern2b.scale(0.9);
+
+		//moving two patterns for "3" key to the top left the canvas
+		pattern3a.position.x += 80;
+		pattern3a.fillColor.hue += 2;
+		pattern3b.position.y -= 80;
+		pattern3b.fillColor.hue += 2;
+
+		//shrinking the height of the patterns for "4" key
+		pattern4a.bounds.height -= 21;
+		pattern4b.bounds.height -= 21;
+		pattern4c.bounds.height -= 21;
+
+		pattern4a.fillColor.hue += 4;
+		pattern4b.fillColor.hue += 4;
+		pattern4c.fillColor.hue += 4;
+
+		if (pattern4a.area < 10) {
+			pattern4a.remove();
+			pattern4b.remove();
+			pattern4c.remove();
+		}
+
+		//scaling up and increasing brightness for "5" key
+		pattern5.fillColor.hue +=2;
+		pattern5.fillColor.brightness += 0.02
+		pattern5.scale(1.2);
+
+		if (pattern5.area > width * height * height) {
+			pattern5.fillColor.alpha -= 0.05;
+		}
+
+		//skewing the pattern for "6" key
+		pattern6.skew(10,10);
+		pattern6.fillColor.hue += 2;
+		pattern6.fillColor.brightness += 0.01;
+
+		if (pattern6.area > width * height) {
+			pattern6.remove();
+		}
+
+		//scaling and rotating pattern for "7" key
+		pattern7.scale(1.1);
+		pattern7.rotate(3);
+
+		//moving two patterns vertically for "8" key
+		pattern8a.position.y += 70;
+		pattern8a.fillColor.hue += 2;
+		pattern8a.fillColor.brightness += 0.02
+		pattern8b.position.y -= 70;
+		pattern8b.fillColor.hue += 2;
+		pattern8b.fillColor.brightness += 0.001
+
+		//spiraling two patterns and scaling down for "9" key
+		pattern9a.rotate(3, new Point(width/2, height/2));
+		pattern9a.scale(0.9);
+		pattern9a.fillColor.hue += 1;
+		pattern9b.rotate(-4, new Point(width - 400, height/3));
+		pattern9b.scale(0.9);
+		pattern9b.fillColor.hue += 1;
+
+		if (pattern9a.area < 1) {
+			pattern9a.remove();
+			pattern9b.remove();
+		}
+
+		//moving and scaling two patterns for "0" key
+		pattern10a.position.x += 30;
+		pattern10a.position.y -= 20;
+		pattern10a.rotate(10);
+		pattern10a.scale(1.08)
+		pattern10b.position.x -= 30;
+		pattern10b.position.y -= 20;
+		pattern10b.rotate(-10)
+		pattern10b.scale(1.08);
+
+		if(pattern10a.area > width * height) {
+			pattern10a.remove();
+			pattern10b.remove();
+		}
+	}
+
+	//function to return a temporary shape
+	function createTemp() {
+		var temp = new Path.Circle(new Point(width/2, height/2), 2);
+		temp.fillColor = "rgba(0,0,0,0)";
+		return temp;
+	}
+</script>
+</head>
+<body>
+	<span class="hello">
+		<h1>s<span id="n">n</span>se.</h1>
+		<h3>An Interactive Audio-Visual Experience.</h3>
+		<p>Control using the 0-9 keys.</p>
+		<p>Press "Spacebar" to toggle this screen.</p>
+		<p id="footer">A page by Abrar Bhuiyan. <a href="https://github.com/likethemammal/css-visualizer" target="_blank"><i class="fab fa-github"></i></a> <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+		</p>
+	</span>
+	<canvas id="myCanvas" resize>
+	</canvas>
+</body>
+</html>
