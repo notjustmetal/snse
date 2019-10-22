@@ -12,6 +12,6 @@ snse is a web application that allows the user to play a variety of musical soun
 
 ## Built With
 
-* [paper.js](http://paperjs.org/) - Vector graphics scripting framework.
-* [howler.js](https://howlerjs.com/) - Audio library utilizing Web Audio API.
+* [Paper.js](http://paperjs.org/) - Vector graphics scripting framework.
+* [Howler.js](https://howlerjs.com/) - Audio library utilizing Web Audio API.
 * [Sample Focus](https://samplefocus.com) - Royalty free sounds.
